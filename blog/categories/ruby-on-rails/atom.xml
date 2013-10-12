@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Ruby on Rails | Guirec Corbel]]></title>
+  <link href="http://GCorbel.github.io/blog-en/blog/categories/ruby-on-rails/atom.xml" rel="self"/>
+  <link href="http://GCorbel.github.io/blog-en/"/>
+  <updated>2013-10-12T08:54:45-04:00</updated>
+  <id>http://GCorbel.github.io/blog-en/</id>
+  <author>
+    <name><![CDATA[Guirec Corbel]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[When I use Helpers, Partials, Presenters and Decorators]]></title>
+    <link href="http://GCorbel.github.io/blog-en/blog/2013/10/12/when-i-use-helpers-partials-presenters-and-decorators/"/>
+    <updated>2013-10-12T08:53:00-04:00</updated>
+    <id>http://GCorbel.github.io/blog-en/blog/2013/10/12/when-i-use-helpers-partials-presenters-and-decorators</id>
+    <content type="html"><![CDATA[<p>There is some differents ways to have a better organization of your views in a Ruby On Rails application. Partials and helpers are the standard methods. There is also Presenters and Decorators. It can be a little bit confusing to know how and when to use it.</p>
+
+<h1>My organization</h1>
+
+<p>Every technics can have his own utility.</p>
+
+<h2>Helpers</h2>
+
+<p>Helpers are generic methods which can be use for different kind of objects. I create this kind of helpers <code>link_to_update</code>, <code>big_image</code>, <code>styled_form</code>, etc. Those methods create an html code with a css style or a standard text for example.</p>
+
+<h2>Partials</h2>
+
+<p>Partials are used to split a big view into smaller logic parts. I can have a partial <code>side_menu</code>, <code>comment_list</code>, <code>header</code>, etc.</p>
+
+<h2>Presenters</h2>
+
+<p>Presenters is for more complicated queries with two or more models. I have some partials like <code>@page_presenter.page_in_category(ruby_category)</code> or <code>@user_presenter.user_following(an_article)</code>.</p>
+
+<h2>Decorators</h2>
+
+<p>Decorators should act with only one model and shouldn&rsquo;t take parameters (if it&rsquo;s possible). I can do something like this <code>user.full_name</code>, <code>page.big_title</code> or <code>category.permalink</code>. I use the gem <a href="https://github.com/drapergem/draper">Draper</a>.</p>
+
+<p>If I search many models, I do not access to the model class in the view. I use the draper&rsquo;s function <a href="https://github.com/drapergem/draper#decorated-finders">decorates_finders</a>.</p>
+
+<h2>Conclusion</h2>
+
+<p>There may be a better solution but it works for me. If you have a better solution, please, let me know.</p>
+
+<p>I have only one thing which I don&rsquo;t like for presenters. I don&rsquo;t like to instanciate an object in the controller and to pass it into the view. It does not respect the <a href="http://robots.thoughtbot.com/post/50655960596/sandi-metz-rules-for-developers">Sandi Metz&rsquo;s rules</a>. Every rules can be broken with a good reason&hellip;</p>
+]]></content>
+  </entry>
+  
+</feed>

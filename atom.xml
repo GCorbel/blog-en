@@ -4,7 +4,7 @@
   <title><![CDATA[Guirec Corbel]]></title>
   <link href="http://GCorbel.github.io/blog-en/atom.xml" rel="self"/>
   <link href="http://GCorbel.github.io/blog-en/"/>
-  <updated>2013-10-12T08:49:35-04:00</updated>
+  <updated>2013-10-12T08:54:45-04:00</updated>
   <id>http://GCorbel.github.io/blog-en/</id>
   <author>
     <name><![CDATA[Guirec Corbel]]></name>
@@ -12,5 +12,234 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[When I use Helpers, Partials, Presenters and Decorators]]></title>
+    <link href="http://GCorbel.github.io/blog-en/blog/2013/10/12/when-i-use-helpers-partials-presenters-and-decorators/"/>
+    <updated>2013-10-12T08:53:00-04:00</updated>
+    <id>http://GCorbel.github.io/blog-en/blog/2013/10/12/when-i-use-helpers-partials-presenters-and-decorators</id>
+    <content type="html"><![CDATA[<p>There is some differents ways to have a better organization of your views in a Ruby On Rails application. Partials and helpers are the standard methods. There is also Presenters and Decorators. It can be a little bit confusing to know how and when to use it.</p>
+
+<h1>My organization</h1>
+
+<p>Every technics can have his own utility.</p>
+
+<h2>Helpers</h2>
+
+<p>Helpers are generic methods which can be use for different kind of objects. I create this kind of helpers <code>link_to_update</code>, <code>big_image</code>, <code>styled_form</code>, etc. Those methods create an html code with a css style or a standard text for example.</p>
+
+<h2>Partials</h2>
+
+<p>Partials are used to split a big view into smaller logic parts. I can have a partial <code>side_menu</code>, <code>comment_list</code>, <code>header</code>, etc.</p>
+
+<h2>Presenters</h2>
+
+<p>Presenters is for more complicated queries with two or more models. I have some partials like <code>@page_presenter.page_in_category(ruby_category)</code> or <code>@user_presenter.user_following(an_article)</code>.</p>
+
+<h2>Decorators</h2>
+
+<p>Decorators should act with only one model and shouldn&rsquo;t take parameters (if it&rsquo;s possible). I can do something like this <code>user.full_name</code>, <code>page.big_title</code> or <code>category.permalink</code>. I use the gem <a href="https://github.com/drapergem/draper">Draper</a>.</p>
+
+<p>If I search many models, I do not access to the model class in the view. I use the draper&rsquo;s function <a href="https://github.com/drapergem/draper#decorated-finders">decorates_finders</a>.</p>
+
+<h2>Conclusion</h2>
+
+<p>There may be a better solution but it works for me. If you have a better solution, please, let me know.</p>
+
+<p>I have only one thing which I don&rsquo;t like for presenters. I don&rsquo;t like to instanciate an object in the controller and to pass it into the view. It does not respect the <a href="http://robots.thoughtbot.com/post/50655960596/sandi-metz-rules-for-developers">Sandi Metz&rsquo;s rules</a>. Every rules can be broken with a good reason&hellip;</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Leap Motion : A developer's point of view]]></title>
+    <link href="http://GCorbel.github.io/blog-en/blog/2013/10/12/leap-motion-a-developers-point-of-view/"/>
+    <updated>2013-10-12T08:50:00-04:00</updated>
+    <id>http://GCorbel.github.io/blog-en/blog/2013/10/12/leap-motion-a-developers-point-of-view</id>
+    <content type="html"><![CDATA[<p>Last week, the company <a href="http://www.optik360.com/">Optik 360</a>, specialized in 360 degrees pictures, asked me to test Leap Motion by creating an application to view panoramic images. The image would move according to the movements made by the user.</p>
+
+<p>For those who don&rsquo;t know yet Leap Motion, it is a small motion sensor about eight centimeters. For more information, visit <a href="https://www.leapmotion.com/">their official website</a>.</p>
+
+<p>Please note <em>I&rsquo;m not a native english-speaker</em>. I probably did a lot of mistakes in this article. If you want to correct my mistakes, you can change the text <a href="https://github.com/GCorbel/blog/blob/gh-pages/_posts/2013-08-09-leap-motion-a-developer-point-of-view.md">here</a> and do a pull request. Thanks!</p>
+
+<h2>Step 1 : Installation</h2>
+
+<p>On Windows, installing takes less than 5 minutes.
+I went to the specified page to download the application, installed it, and my movements were detected by the Leap Motion sensor.</p>
+
+<p>I expected that my CPU would be overloaded: actually it&rsquo;s not! When I move in front of the sensor, Leap Motion uses 7% of my CPU (my Windows Media Player uses 8%).
+However, I chose maximum accuracy at the expense of speed, in the Control Panel. So, there is no problem with speed.</p>
+
+<p>After moving my hands in all directions by testing the provided applications (my dog think I&rsquo;m crazy), I wanted to install it on Ubuntu 12.04.
+It is possible to download a Linux-compatible version of the SDK on their site. Installing was also very fast.
+The sensor and the configuration panel are launched properly. The only problem I encountered: it does not work.
+The controller does not recognize my movements. I sent <a href="https://developer.leapmotion.com/forums/forums/10/topics/1811">a message on their forum</a>.
+For now, I have no response. We&rsquo;ll see for the future.</p>
+
+<h2>Step 2 : First development</h2>
+
+<p>Then I went back to Windows to start developing. Leap Motion has an official SDK in multiple languages.
+Unfortunately, my favorite language, Ruby, is not officially supported. I think it&rsquo;s great to have chosen to be compatible with multiple languages. It gives a lot of opportunities for developers.</p>
+
+<p>For my first project, I choose to develop in JavaScript. Leap Motion allows to do a client-side application. The application listens a port to receive data from the sensor. I choose JavaScript because there is no need to do an installation on a PC. A simple (modern) web-browser allow to have an application that works with Leap. Awesome!</p>
+
+<p>The library provided by Leap is impressive. It&rsquo;s super simple to do an application. Only few lines of code are enough. Here is an example:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='coffeescript'><span class='line'><span class="nx">Leap</span><span class="p">.</span><span class="nx">loop</span><span class="p">(</span><span class="nx">function</span><span class="p">(</span><span class="nx">frame</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">frame</span><span class="p">.</span><span class="nx">fingers</span><span class="p">.</span><span class="nx">length</span><span class="p">)</span>
+</span><span class='line'><span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>This snippet logs the number of fingers detected by the controller. Any developer can do that.</p>
+
+<h2>Step 3 : Search for a JavaScript library</h2>
+
+<p>After some tests, I stated to looking for any existing code to display panoramic images. I found <a href="http://mrdoob.github.io/three.js/examples/webgl_panorama_equirectangular.html">this project</a>. A big advantage of this code is that it uses <a href="http://threejs.org/">Three.js</a>. Three.js is a library which allows to do 3D animations in JavaScript. There is a <a href="http://mrdoob.github.io/three.js/">a lot of example provided by Three.js&rsquo;s developers</a>. With hard work, we can develop a Leap compatible version of all these examples.</p>
+
+<p>So, I downloaded the code locally and I started to edit it to customize it as I want. I changed it to be more object-oriented and I used CoffeeScript.</p>
+
+<h2>Phase 4 : Integration of the Leap library</h2>
+
+<p>I studied the behavior of the mouse and I wanted to replicate it. First, I extracted the code for the mouse in a separate class. To test the movement with Leap Motion, my first instinct was to do this kind of code :</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='coffeescript'><span class='line'><span class="k">class</span> <span class="nx">LeapPano</span><span class="p">.</span><span class="nx">LeapMotion</span>
+</span><span class='line'>  <span class="nv">constructor: </span><span class="nf">(view) -&gt;</span>
+</span><span class='line'>    <span class="vi">@view = </span><span class="nx">view</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="nv">init: </span><span class="o">=&gt;</span>
+</span><span class='line'>    <span class="nx">Leap</span><span class="p">.</span><span class="nx">loop</span><span class="p">(</span><span class="nf">(frame) =&gt;</span>
+</span><span class='line'>      <span class="nx">@view</span><span class="p">.</span><span class="nx">setLon</span><span class="p">(</span><span class="nx">@view</span><span class="p">.</span><span class="nx">getLon</span><span class="p">()</span> <span class="o">+</span> <span class="p">.</span><span class="mi">1</span><span class="p">)</span>
+</span><span class='line'>    <span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>This code allows, for each iteration, to move the camera horizontally.
+A problem with the code is that I do not manage the iterations speed.
+I didn&rsquo;t found a way to make it on the Leap&rsquo;s documentation. I choose to do it like this :</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+</pre></td><td class='code'><pre><code class='coffeescript'><span class='line'><span class="k">class</span> <span class="nx">LeapPano</span><span class="p">.</span><span class="nx">LeapMotion</span>
+</span><span class='line'>  <span class="nv">constructor: </span><span class="nf">(view) -&gt;</span>
+</span><span class='line'>    <span class="vi">@view = </span><span class="nx">view</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="nv">setFrame: </span><span class="nf">(frame) -&gt;</span>
+</span><span class='line'>    <span class="vi">@frame = </span><span class="nx">frame</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="nv">init: </span><span class="nf">-&gt;</span>
+</span><span class='line'>    <span class="nx">setTimeout</span><span class="p">(</span><span class="nx">@checkMotion</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="nv">checkMotion: </span><span class="o">=&gt;</span>
+</span><span class='line'>    <span class="k">if</span> <span class="nx">@frame</span><span class="o">?</span>
+</span><span class='line'>      <span class="nx">@view</span><span class="p">.</span><span class="nx">setLon</span><span class="p">(</span><span class="nx">@view</span><span class="p">.</span><span class="nx">getLon</span><span class="p">()</span> <span class="o">+</span> <span class="p">.</span><span class="mi">1</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nx">setTimeout</span><span class="p">(</span><span class="nx">@checkMotion</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>The call to the function <code>Leap.loop</code> is extracted from this object and the result is passed via a setter at each iteration. At the initialization, the <code>setTimeout</code> function that allows to execute the movements recognation function every ten milliseconds, is launched. This code allow also allows to not have multiple calls to the function <code>Leap.loop</code>. The loop is started only one time, in the main page. The date recognized are sent to different objects in need. I think this is a better architecture.</p>
+
+<p>Now, it works as I want. I can take care of the motion recognition. I changed the function <code>checkMotion</code> like this :</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class='coffeescript'><span class='line'><span class="nv">checkMotion: </span><span class="o">=&gt;</span>
+</span><span class='line'>  <span class="k">if</span> <span class="nx">@frame</span><span class="o">?</span>
+</span><span class='line'>    <span class="nv">finger = </span><span class="nx">@frame</span><span class="p">.</span><span class="nx">fingers</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</span><span class='line'>    <span class="k">if</span> <span class="nx">finger</span><span class="o">?</span>
+</span><span class='line'>      <span class="nv">x = </span><span class="nx">finger</span><span class="p">.</span><span class="nx">tipPosition</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</span><span class='line'>      <span class="nv">y = </span><span class="nx">finger</span><span class="p">.</span><span class="nx">tipPosition</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+</span><span class='line'>      <span class="nx">@view</span><span class="p">.</span><span class="nx">setLon</span><span class="p">(</span><span class="nx">@view</span><span class="p">.</span><span class="nx">getLon</span><span class="p">()</span> <span class="o">+</span> <span class="p">(</span><span class="nx">x</span><span class="o">/</span><span class="mi">320</span><span class="p">))</span>
+</span><span class='line'>      <span class="nx">@view</span><span class="p">.</span><span class="nx">setLat</span><span class="p">(</span><span class="nx">@view</span><span class="p">.</span><span class="nx">getLat</span><span class="p">()</span> <span class="o">+</span> <span class="p">((</span><span class="nx">y</span><span class="o">-</span><span class="mi">160</span><span class="p">)</span><span class="o">/</span><span class="mi">320</span><span class="p">))</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="nx">setTimeout</span><span class="p">(</span><span class="nx">@checkMotion</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><code>@frame.fingers[0]</code> retried the first finger detected. <code>finger.tipPosition</code> returns an array containing the position in X, Y and Z. Finally, I change the position of the camera in the 3D scene. In this code, a ratio is calculated to move faster if the finger is far of the center of the sensor.</p>
+
+<p>The last feature I wanted to add was to change the image when the finger do a circle. So, I added this :</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='coffeescript'><span class='line'><span class="k">if</span><span class="p">(</span><span class="nx">@frame</span><span class="p">.</span><span class="nx">gestures</span><span class="p">.</span><span class="nx">length</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span>
+</span><span class='line'>  <span class="nv">gesture = </span><span class="nx">@frame</span><span class="p">.</span><span class="nx">gestures</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</span><span class='line'>  <span class="k">if</span> <span class="nx">gesture</span><span class="p">.</span><span class="nx">type</span> <span class="o">==</span> <span class="s">&quot;circle&quot;</span>
+</span><span class='line'>    <span class="nx">@view</span><span class="p">.</span><span class="nx">switchFile</span><span class="p">()</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Again, it&rsquo;s very simple. <code>@frame.gestures</code> returns a list of detected movements. Thereafter, the code checks if the type of movement is a circle. If this is the case, the image is changed.</p>
+
+<p>To recognized the movements, it is necessary to call the function <code>Leap.loop</code> like this :</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='coffeescript'><span class='line'><span class="nx">Leap</span><span class="p">.</span><span class="nx">loop</span><span class="p">({</span><span class="nv">enableGestures: </span><span class="kc">true</span><span class="p">},</span> <span class="nx">function</span><span class="p">(</span><span class="nx">frame</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nx">pano</span><span class="p">.</span><span class="nx">setFrame</span><span class="p">(</span><span class="nx">frame</span><span class="p">)</span>
+</span><span class='line'><span class="p">})</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>And voila! Everything works. As a good Open-Source contributor, I posted the code here : <a href="https://github.com/GCorbel/LeapPano">https://github.com/GCorbel/LeapPano</a>. I also created a page with <a href="http://pages.github.com/">GitHub-Pages</a> visible here : <a href="http://gcorbel.github.io/LeapPano/">http://gcorbel.github.io/LeapPano/</a>.</p>
+
+<h2>What I like Leap Motion</h2>
+
+<p>First, I loved the ease of installation. It&rsquo;s really Plug and Play. The development is extremely easy. The API is provided as simple as possible. The availability in few languages is awesome. I&rsquo;m really impressed with the opportunities provided and simplicity.</p>
+
+<h2>Where I have some doubts</h2>
+
+<p>Small flat for documentation. I think the documentation is not very detailed. There is a little code displayed. To see the actual code, it&rsquo;s necessary to look the examples available on GitHub.</p>
+
+<p>At the motion recognition, there are three basic movements, Circle, Swipe and Tap. To add movement is much complex. I cannot imagine a game like <a href="http://en.wikipedia.org/wiki/Black_%26_White_%28video_game%29">Black &amp; White</a> for the moment.</p>
+
+<p>The weak point is the accuracy. The number of detected fingers is not always real and the position is approximate. When you think about it, this is normal. If you point an image to the screen, your finger is shaking. Targeting a small icon can be very long. Leap Motion is not ready to replace the mouse.</p>
+
+<p>In addition, I find the tool detection is very hazardous. A pencil pass from detected to undetected without reason. Finger detection is much more stable.</p>
+
+<p>Actually, the Leap Motion&rsquo;s version is 0.8. This is a brand new system. We just imagine that the system will be improved over time.</p>
+
+<h2>Conclusion</h2>
+
+<p>I love Leap Motion!</p>
+
+<p>The future as imagined in the 80s/90s is our worn. We are not yet able to make screen as in Minority Report, but you get approach. Technologies such as Leap, Google Voice, Google glaces, home automation, etc. are dreaming. The future is open to any developers. We can do impressive things.</p>
+]]></content>
+  </entry>
   
 </feed>

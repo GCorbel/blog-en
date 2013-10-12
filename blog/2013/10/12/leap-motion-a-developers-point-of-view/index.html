@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Guirec Corbel</title>
+  <title>Leap Motion : A developer's point of view - Guirec Corbel</title>
   <meta name="author" content="Guirec Corbel">
 
   
-  <meta name="description" content="There is some differents ways to have a better organization of your views in a Ruby On Rails application. Partials and helpers are the standard &hellip;">
+  <meta name="description" content="Last week, the company Optik 360, specialized in 360 degrees pictures, asked me to test Leap Motion by creating an application to view panoramic &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://GCorbel.github.io/blog-en">
+  <link rel="canonical" href="http://GCorbel.github.io/blog-en/blog/2013/10/12/leap-motion-a-developers-point-of-view">
   <link href="/blog-en/favicon.png" rel="icon">
   <link href="/blog-en/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/blog-en/atom.xml" rel="alternate" title="Guirec Corbel" type="application/atom+xml">
@@ -75,82 +75,12 @@
 </nav>
   <div id="main">
     <div id="content">
-      <div class="blog-index">
+      <div>
+<article class="hentry" role="article">
   
-  
-  
-    <article>
-      
   <header>
     
-      <h1 class="entry-title"><a href="/blog-en/blog/2013/10/12/when-i-use-helpers-partials-presenters-and-decorators/">When I Use Helpers, Partials, Presenters and Decorators</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-10-12T08:53:00-04:00" pubdate data-updated="true">Oct 12<span>th</span>, 2013</time>
-        
-           | <a href="/blog-en/blog/2013/10/12/when-i-use-helpers-partials-presenters-and-decorators/#disqus_thread"
-             data-disqus-identifier="http://GCorbel.github.io/blog-en/blog/2013/10/12/when-i-use-helpers-partials-presenters-and-decorators/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>There is some differents ways to have a better organization of your views in a Ruby On Rails application. Partials and helpers are the standard methods. There is also Presenters and Decorators. It can be a little bit confusing to know how and when to use it.</p>
-
-<h1>My organization</h1>
-
-<p>Every technics can have his own utility.</p>
-
-<h2>Helpers</h2>
-
-<p>Helpers are generic methods which can be use for different kind of objects. I create this kind of helpers <code>link_to_update</code>, <code>big_image</code>, <code>styled_form</code>, etc. Those methods create an html code with a css style or a standard text for example.</p>
-
-<h2>Partials</h2>
-
-<p>Partials are used to split a big view into smaller logic parts. I can have a partial <code>side_menu</code>, <code>comment_list</code>, <code>header</code>, etc.</p>
-
-<h2>Presenters</h2>
-
-<p>Presenters is for more complicated queries with two or more models. I have some partials like <code>@page_presenter.page_in_category(ruby_category)</code> or <code>@user_presenter.user_following(an_article)</code>.</p>
-
-<h2>Decorators</h2>
-
-<p>Decorators should act with only one model and shouldn&rsquo;t take parameters (if it&rsquo;s possible). I can do something like this <code>user.full_name</code>, <code>page.big_title</code> or <code>category.permalink</code>. I use the gem <a href="https://github.com/drapergem/draper">Draper</a>.</p>
-
-<p>If I search many models, I do not access to the model class in the view. I use the draper&rsquo;s function <a href="https://github.com/drapergem/draper#decorated-finders">decorates_finders</a>.</p>
-
-<h2>Conclusion</h2>
-
-<p>There may be a better solution but it works for me. If you have a better solution, please, let me know.</p>
-
-<p>I have only one thing which I don&rsquo;t like for presenters. I don&rsquo;t like to instanciate an object in the controller and to pass it into the view. It does not respect the <a href="http://robots.thoughtbot.com/post/50655960596/sandi-metz-rules-for-developers">Sandi Metz&rsquo;s rules</a>. Every rules can be broken with a good reason&hellip;</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog-en/blog/2013/10/12/leap-motion-a-developers-point-of-view/">Leap Motion : A Developer&#8217;s Point of View</a></h1>
+      <h1 class="entry-title">Leap Motion : A Developer's Point of View</h1>
     
     
       <p class="meta">
@@ -168,15 +98,15 @@
 
 <time datetime="2013-10-12T08:50:00-04:00" pubdate data-updated="true">Oct 12<span>th</span>, 2013</time>
         
-           | <a href="/blog-en/blog/2013/10/12/leap-motion-a-developers-point-of-view/#disqus_thread"
-             data-disqus-identifier="http://GCorbel.github.io/blog-en/blog/2013/10/12/leap-motion-a-developers-point-of-view/">Comments</a>
+           | <a href="#disqus_thread"
+             data-disqus-identifier="http://GCorbel.github.io/blog-en">Comments</a>
         
       </p>
     
   </header>
 
 
-  <div class="entry-content"><p>Last week, the company <a href="http://www.optik360.com/">Optik 360</a>, specialized in 360 degrees pictures, asked me to test Leap Motion by creating an application to view panoramic images. The image would move according to the movements made by the user.</p>
+<div class="entry-content"><p>Last week, the company <a href="http://www.optik360.com/">Optik 360</a>, specialized in 360 degrees pictures, asked me to test Leap Motion by creating an application to view panoramic images. The image would move according to the movements made by the user.</p>
 
 <p>For those who don&rsquo;t know yet Leap Motion, it is a small motion sensor about eight centimeters. For more information, visit <a href="https://www.leapmotion.com/">their official website</a>.</p>
 
@@ -361,18 +291,65 @@ I didn&rsquo;t found a way to make it on the Leap&rsquo;s documentation. I choos
 
 <p>The future as imagined in the 80s/90s is our worn. We are not yet able to make screen as in Minority Report, but you get approach. Technologies such as Leap, Google Voice, Google glaces, home automation, etc. are dreaming. The future is open to any developers. We can do impressive things.</p>
 </div>
+
+
+  <footer>
+    <p class="meta">
+      
   
+
+<span class="byline author vcard">Posted by <span class="fn">Guirec Corbel</span></span>
+
+      
+
+
+
+
+
+
+
+
   
 
 
-    </article>
+<time datetime="2013-10-12T08:50:00-04:00" pubdate data-updated="true">Oct 12<span>th</span>, 2013</time>
+      
+
+<span class="categories">
   
-  <div class="pagination">
+    <a class='category' href='/blog-en/blog/categories/leap-motion/'>Leap Motion</a>
+  
+</span>
+
+
+    </p>
     
-    <a href="/blog-en/blog/archives">Blog Archives</a>
-    
-  </div>
+      <div class="sharing">
+  
+  <a href="/blog-en//twitter.com/share" class="twitter-share-button" data-url="http://GCorbel.github.io/blog-en/blog/2013/10/12/leap-motion-a-developers-point-of-view/" data-via="GuirecCorbel" data-counturl="http://GCorbel.github.io/blog-en/blog/2013/10/12/leap-motion-a-developers-point-of-view/" >Tweet</a>
+  
+  
+  
 </div>
+
+    
+    <p class="meta">
+      
+      
+        <a class="basic-alignment right" href="/blog-en/blog/2013/10/12/when-i-use-helpers-partials-presenters-and-decorators/" title="Next Post: When I use Helpers, Partials, Presenters and Decorators">When I use Helpers, Partials, Presenters and Decorators &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
 <aside class="sidebar">
   
     <section>
@@ -384,7 +361,7 @@ I didn&rsquo;t found a way to make it on the Leap&rsquo;s documentation. I choos
       </li>
     
       <li class="post">
-        <a href="/blog-en/blog/2013/10/12/leap-motion-a-developers-point-of-view/">Leap Motion : A Developer&#8217;s Point of View</a>
+        <a href="/blog-en/blog/2013/10/12/leap-motion-a-developers-point-of-view/">Leap Motion : A Developer's Point of View</a>
       </li>
     
   </ul>
@@ -393,7 +370,7 @@ I didn&rsquo;t found a way to make it on the Leap&rsquo;s documentation. I choos
 <section>
   <h1>GitHub Repos</h1>
   <ul id="gh_repos">
-    <li class="loading">Status updating&#8230;</li>
+    <li class="loading">Status updating...</li>
   </ul>
   
   <a href="https://github.com/GCorbel">@GCorbel</a> on GitHub
@@ -426,6 +403,7 @@ I didn&rsquo;t found a way to make it on the Leap&rsquo;s documentation. I choos
   
 </aside>
 
+
     </div>
   </div>
   <footer role="contentinfo"><p>
@@ -440,7 +418,10 @@ I didn&rsquo;t found a way to make it on the Leap&rsquo;s documentation. I choos
       var disqus_shortname = 'guireccorbel';
       
         
-        var disqus_script = 'count.js';
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://GCorbel.github.io/blog-en/blog/2013/10/12/leap-motion-a-developers-point-of-view/';
+        var disqus_url = 'http://GCorbel.github.io/blog-en/blog/2013/10/12/leap-motion-a-developers-point-of-view/';
+        var disqus_script = 'embed.js';
       
     (function () {
       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
