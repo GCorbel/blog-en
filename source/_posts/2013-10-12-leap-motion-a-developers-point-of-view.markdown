@@ -13,6 +13,8 @@ For those who don't know yet Leap Motion, it is a small motion sensor about eigh
 
 Please note *I'm not a native english-speaker*. I probably did a lot of mistakes in this article. If you want to correct my mistakes, you can change the text [here](https://github.com/GCorbel/blog/blob/gh-pages/_posts/2013-08-09-leap-motion-a-developer-point-of-view.md) and do a pull request. Thanks!
 
+<!--more-->
+
 Step 1 : Installation
 ---------------------
 

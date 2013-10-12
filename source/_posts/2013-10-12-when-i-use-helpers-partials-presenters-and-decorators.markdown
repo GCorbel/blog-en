@@ -9,6 +9,8 @@ categories:
 
 There is some differents ways to have a better organization of your views in a Ruby On Rails application. Partials and helpers are the standard methods. There is also Presenters and Decorators. It can be a little bit confusing to know how and when to use it.
 
+<!--more-->
+
 My organization
 ===========
 
