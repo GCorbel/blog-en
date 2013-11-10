@@ -33,6 +33,26 @@ How to record in a file
 -----------------------
 The second option offered by Sbire is to write what you say in a file. To do this, you must type `sbire save` and say what you want. The file `~/.sbire/text` is written. To view the file as it grows, you can do `tail -f ~/.sbire/text`. When you want to stop, you must do `sbire stop`.
 
+Install it
+----------
+On linux :
+
+    sudo apt-get install sox notify-osd ruby1.9.1
+    gem install sbire
+    sbire install
+
+On mac :
+
+    brew install sox
+    gem install sbire
+    sbire install
+
+On windows :
+
+    Install ruby with [RubyInstall](http://rubyinstaller.org/)
+    gem install sbire
+    sbire install
+
 How to link it with LeapMotion
 ------------------------------
 [LeapMotion](https://www.leapmotion.com/) is a tool which enables to recognize movements. I recently contributed to [PyLeapMouse](https://github.com/openleap/PyLeapMouse). I added the possibility to link motions with commands. It reads a file called `commands.ini` to bind commands. To link LeapMotion and Sbire, you can create a file like this :
