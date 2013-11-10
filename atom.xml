@@ -4,7 +4,7 @@
   <title><![CDATA[Guirec Corbel]]></title>
   <link href="http://GCorbel.github.io/blog-en/atom.xml" rel="self"/>
   <link href="http://GCorbel.github.io/blog-en/"/>
-  <updated>2013-10-12T09:25:36-04:00</updated>
+  <updated>2013-11-10T07:29:35-05:00</updated>
   <id>http://GCorbel.github.io/blog-en/</id>
   <author>
     <name><![CDATA[Guirec Corbel]]></name>
@@ -12,6 +12,75 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Sbire : Say what you want and he will do it]]></title>
+    <link href="http://GCorbel.github.io/blog-en/blog/2013/11/03/sbire-say-what-you-want-and-he-will-do-it/"/>
+    <updated>2013-11-03T18:42:00-05:00</updated>
+    <id>http://GCorbel.github.io/blog-en/blog/2013/11/03/sbire-say-what-you-want-and-he-will-do-it</id>
+    <content type="html"><![CDATA[<p>Sbire is a simple program which enables to execute commands by analyzing your voice. In this article, you will see how to use it and how to link it with LeapMotion.</p>
+
+<!--more-->
+
+
+<p>Please note <em>I&rsquo;m not a native english-speaker</em>. I did probably a lot of mistakes in this article. If you want to correct it, you can change the text <a href="https://github.com/GCorbel/blog/tree/master/source/_posts">here</a> and do a pull request. Thanks!</p>
+
+<h2>How to execute commands</h2>
+
+<p>First, in a terminal, you must type <code>sbire start</code>. This will call sox to record an audio file.
+After, you simply must say what command you want and it will execute it. To recognize your voice it, will send the audio file to Google voice and get the result in JSon format.
+With this result, Sbire will check in a file to find the associated command. This command is executed.</p>
+
+<p>When you say something like &ldquo;firefox&rdquo;, it will simply execute the command <code>firefox</code>. For more complex sentences, Sbire enables to create a link between commands and phrases. To do this, Sbire must have a file <code>~/.sbire/commands.yml</code> like this one :</p>
+
+<pre><code>"chromium-browser": ["open chrome", "chrome"]
+"skype": "open skype"
+"rhythmbox-client --play": "play music"
+"rhythmbox-client --pause": "stop to play music"
+</code></pre>
+
+<p>To ensure than Sbire is stopped, you must type <code>sbire stop</code>. It will kill all subprocesses.</p>
+
+<p>Obviously, Sbire can be used with a keyboard shortcut. This will increase the use experience.</p>
+
+<h2>How to record in a file</h2>
+
+<p>The second option offered by Sbire is to write what you say in a file. To do this, you must type <code>sbire save</code> and say what you want. The file <code>~/.sbire/text</code> is written. To view the file as it grows, you can do <code>tail -f ~/.sbire/text</code>. When you want to stop, you must do <code>sbire stop</code>.</p>
+
+<h2>How to link it with LeapMotion</h2>
+
+<p><a href="https://www.leapmotion.com/">LeapMotion</a> is a tool which enables to recognize movements. I recently contributed to <a href="https://github.com/openleap/PyLeapMouse">PyLeapMouse</a>. I added the possibility to link motions with commands. It reads a file called <code>commands.ini</code> to bind commands. To link LeapMotion and Sbire, you can create a file like this :</p>
+
+<pre><code>[clockwise]
+1finger: sbire start
+2finger: sbire start
+3finger: sbire start
+4finger: sbire start
+5finger: sbire start
+
+[counterclockwise]
+1finger: sbire stop
+2finger: sbire stop
+3finger: sbire stop
+4finger: sbire stop
+5finger: sbire stop
+</code></pre>
+
+<p>This enables to start sbire, when the user do a clockwise circle, and stop sbire, when the user do a counter clockwise circle.</p>
+
+<h2>Contribute</h2>
+
+<p>I&rsquo;m open to any comments and suggests. Contributions are welcomed. You can submit them on <a href="https://github.com/GCorbel/sbire">GitHub</a>.</p>
+
+<h2>More informations</h2>
+
+<p>For more information on installation, usage and configuration, rendez-vous on the <a href="https://github.com/GCorbel/sbire">GitHub page of the project</a>.</p>
+
+<h2>A lot more information</h2>
+
+<p>If you have other questions, contact me by email, at guirec.corbel@gmail.com, or on <a href="https://twitter.com/GuirecCorbel">twitter</a>.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[When I use Helpers, Partials, Presenters and Decorators]]></title>
