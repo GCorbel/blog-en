@@ -139,6 +139,29 @@ With this result, Sbire will check in a file to find the associated command. Thi
 
 <p>The second option offered by Sbire is to write what you say in a file. To do this, you must type <code>sbire save</code> and say what you want. The file <code>~/.sbire/text</code> is written. To view the file as it grows, you can do <code>tail -f ~/.sbire/text</code>. When you want to stop, you must do <code>sbire stop</code>.</p>
 
+<h2>Install it</h2>
+
+<p>On linux :</p>
+
+<pre><code>sudo apt-get install sox notify-osd ruby1.9.1
+gem install sbire
+sbire install
+</code></pre>
+
+<p>On mac :</p>
+
+<pre><code>brew install sox
+gem install sbire
+sbire install
+</code></pre>
+
+<p>On windows :</p>
+
+<pre><code>Install ruby with [RubyInstall](http://rubyinstaller.org/)
+gem install sbire
+sbire install
+</code></pre>
+
 <h2>How to link it with LeapMotion</h2>
 
 <p><a href="https://www.leapmotion.com/">LeapMotion</a> is a tool which enables to recognize movements. I recently contributed to <a href="https://github.com/openleap/PyLeapMouse">PyLeapMouse</a>. I added the possibility to link motions with commands. It reads a file called <code>commands.ini</code> to bind commands. To link LeapMotion and Sbire, you can create a file like this :</p>
